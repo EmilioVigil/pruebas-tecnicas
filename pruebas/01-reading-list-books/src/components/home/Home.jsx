@@ -1,10 +1,11 @@
-
+import { ReadingList } from "../readingList/ReadingList"
 
 export function Home() {
 
     return (
-        <p>
-            List Books
-        </p>
+        <>
+            <ReadingList />
+
+        </>
     )
 }
