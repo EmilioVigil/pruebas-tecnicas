@@ -27,10 +27,11 @@ const SectionInformation = styled.div`
   padding: 20px;
   height: 45rem;
   width: 90rem;
-  border-radius: 5px;
+  border-radius: 50px;
   `
 const Title = styled.div`
     font-size: 20px;
+    margin-left: 30px ;
 
 `
 
@@ -75,8 +76,67 @@ const Button = styled.button`
     background-color: #F2E4CF;
     animation: ${hoverAnimation} 1s infinite;
   }
+
+  .link{
+    text-decoration: none;
+    color : black;
+  }
+
+`
+const SectionImage = styled.section`
+    width: 60rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
 `
 
+const GalleryContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+`;
+
+const ImageWrapper = styled.div`
+  position: relative;
+  width: 30%;
+  transition: transform 0.3s;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+`;
+
+const Image = styled.img`
+  width: 100%;
+  height: auto;
+`;
+
+const ImageOverlay = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  ${ImageWrapper}:hover & {
+    opacity: 1;
+  }
+`;
+
+const ImageText = styled.p`
+  color: #fff;
+  font-size: 16px;
+  text-align: center;
+`;
 
 export {
     ContainerLanding,
@@ -84,5 +144,11 @@ export {
     Title,
     SectionMain,
     SectionContent,
-    Button
+    Button,
+    SectionImage,
+    GalleryContainer,
+    ImageWrapper,
+    Image,
+    ImageOverlay,
+    ImageText
 }
