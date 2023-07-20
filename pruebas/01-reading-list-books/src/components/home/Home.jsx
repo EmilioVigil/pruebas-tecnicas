@@ -1,5 +1,4 @@
 //  Components
-import { ReadingList } from "../readingList/ReadingList"
 import { NavBar } from "../navBar/NavBar"
 
 // Style
@@ -10,8 +9,6 @@ export function Home() {
     return (
         <ContainerHome>
             <NavBar />
-            <ReadingList />
-
         </ContainerHome>
     )
 }

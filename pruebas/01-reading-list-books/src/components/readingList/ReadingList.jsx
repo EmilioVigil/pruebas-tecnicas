@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { dataContext } from "../../context/DataContext";
 
 import { CardBook } from "./cardBook/CardBook";
@@ -6,11 +6,19 @@ import { CardBook } from "./cardBook/CardBook";
 // Styled
 import { Container, ContainerCard } from "./ReadingList.styled";
 
-export function ReadingList() {
+export function ReadingList({ filterGenre }) {
 
     // Importamos los books de mi estado global
     const { books } = useContext(dataContext)
 
+    // Hago una copia del estado global, asi puedo filtrar directamente de mi estado local.
+    const [booksFilter, setBooksFilter] = useState(books)
+
+    // Filter genre
+    useEffect(() => {
+        const genreFilter = filterGenre === 'all' ? books : books.filter(b => b.book.genre.includes(filterGenre))
+        setBooksFilter(genreFilter)
+    }, [filterGenre])
 
     return (
         <Container>
@@ -22,7 +30,7 @@ export function ReadingList() {
             <ContainerCard>
                 {
 
-                    books.map(b => {
+                    booksFilter.map(b => {
                         return (
                             <div key={b.book.ISBN}>
                                 <CardBook title={b.book.title} cover={b.book.cover} />
