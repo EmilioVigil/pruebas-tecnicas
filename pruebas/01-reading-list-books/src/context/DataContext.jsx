@@ -11,12 +11,13 @@ export const DataProvider = ({ children }) => {
 
     // Contadores
     const [counterGenre, setCounterGenre] = useState(0);
-
+    const [booksAvailable, setBooksAvailable] = useState(0);
 
     useEffect(() => {
         fetch('books.json').then(response => response.json())
             .then(data => {
                 setBooks(data.library)
+                setBooksAvailable(data.library.length)
             })
     }, [])
 
@@ -33,7 +34,7 @@ export const DataProvider = ({ children }) => {
 
 
     return (
-        <dataContext.Provider value={{ books, genre, counterGenre, setCounterGenre }}  >
+        <dataContext.Provider value={{ books, genre, counterGenre, setCounterGenre, booksAvailable }}  >
             {
                 children
             }
