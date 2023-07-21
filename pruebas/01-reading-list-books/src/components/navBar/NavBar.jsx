@@ -2,7 +2,7 @@ import { useContext, useState } from "react"
 import { dataContext } from "../../context/DataContext"
 
 // Components
-import { ReadingList } from "../readingList/ReadingList"
+import { ListBooks } from "../listBooks/listBooks"
 
 // Style
 import { ContainerNav } from "./NavBar.styled"
@@ -44,7 +44,7 @@ export function NavBar() {
 
                 </div>
             </ContainerNav >
-            <ReadingList filterGenre={filterGenre} />
+            <ListBooks filterGenre={filterGenre} />
         </>
     )
 }
