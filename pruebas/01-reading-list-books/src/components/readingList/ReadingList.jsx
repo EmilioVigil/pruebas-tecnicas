@@ -9,7 +9,7 @@ import { Container, ContainerCard } from "./ReadingList.styled";
 export function ReadingList({ filterGenre }) {
 
     // Importamos los books de mi estado global
-    const { books } = useContext(dataContext)
+    const { books, counterGenre, setCounterGenre } = useContext(dataContext)
 
     // Hago una copia del estado global, asi puedo filtrar directamente de mi estado local.
     const [booksFilter, setBooksFilter] = useState(books)
@@ -17,6 +17,8 @@ export function ReadingList({ filterGenre }) {
     // Filter genre
     useEffect(() => {
         const genreFilter = filterGenre === 'all' ? books : books.filter(b => b.book.genre.includes(filterGenre))
+
+        setCounterGenre(genreFilter.length)
         setBooksFilter(genreFilter)
     }, [filterGenre])
 
@@ -26,7 +28,9 @@ export function ReadingList({ filterGenre }) {
                 <h2>Reading List</h2>
 
             </div>
-
+            <h4>
+                Contador de libros por genero : {counterGenre}
+            </h4>
             <ContainerCard>
                 {
 

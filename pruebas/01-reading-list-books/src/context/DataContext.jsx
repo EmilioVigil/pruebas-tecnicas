@@ -9,6 +9,10 @@ export const DataProvider = ({ children }) => {
     const [books, setBooks] = useState([]);
     const [genre, setGenre] = useState([]);
 
+    // Contadores
+    const [counterGenre, setCounterGenre] = useState(0);
+
+
     useEffect(() => {
         fetch('books.json').then(response => response.json())
             .then(data => {
@@ -29,7 +33,7 @@ export const DataProvider = ({ children }) => {
 
 
     return (
-        <dataContext.Provider value={{ books, setBooks, genre }}  >
+        <dataContext.Provider value={{ books, genre, counterGenre, setCounterGenre }}  >
             {
                 children
             }
