@@ -14,9 +14,9 @@ const hoverAnimation = keyframes`
 `;
 
 const ContainerLanding = styled.section`
-    height: 100vh;
-    background-color: #F2E4CF;
-`
+  height: 100vh;
+  background-color: #F2E4CF;
+`;
 
 const SectionInformation = styled.div`
   position: absolute;
@@ -28,40 +28,62 @@ const SectionInformation = styled.div`
   height: 45rem;
   width: 90rem;
   border-radius: 50px;
-  `
-const Title = styled.div`
-    font-size: 20px;
-    margin-left: 30px ;
 
-`
+  @media (max-width: 1200px) {
+    width: 80rem;
+  }
+
+  @media (max-width: 992px) {
+    width: 70rem;
+  }
+
+  @media (max-width: 768px) {
+    width: 60rem;
+  }
+
+  @media (max-width: 576px) {
+    width: 90%;
+  }
+`;
+
+const Title = styled.div`
+  font-size: 20px;
+  margin-left: 30px;
+`;
 
 const SectionMain = styled.section`
-    display:flex;
-    flex-direction: row;
-`
+  display: flex;
+  flex-direction: row;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`;
 
 const SectionContent = styled.div`
-    height: 40rem;
-    width : 30rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 30px;
+  height: 40rem;
+  width: 30rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
 
-    div{
-        h4{
-            font-size: 3rem;
-        }
-
-        p{
-            color : #A1968F
-        }
-
+  div {
+    h4 {
+      font-size: 3rem;
     }
 
+    p {
+      color: #A1968F;
+    }
+  }
 
-`
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
+
 const Button = styled.button`
   display: inline-block;
   padding: 12px 24px;
@@ -77,19 +99,22 @@ const Button = styled.button`
     animation: ${hoverAnimation} 1s infinite;
   }
 
-  .link{
+  .link {
     text-decoration: none;
-    color : black;
+    color: black;
   }
+`;
 
-`
 const SectionImage = styled.section`
-    width: 60rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-`
+  width: 60rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`;
 
 const GalleryContainer = styled.div`
   display: flex;
@@ -97,6 +122,11 @@ const GalleryContainer = styled.div`
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
 `;
 
 const ImageWrapper = styled.div`
@@ -106,6 +136,14 @@ const ImageWrapper = styled.div`
 
   &:hover {
     transform: scale(1.05);
+  }
+
+  @media (max-width: 768px) {
+    width: 45%;
+  }
+
+  @media (max-width: 576px) {
+    width: 100%;
   }
 `;
 
@@ -139,16 +177,16 @@ const ImageText = styled.p`
 `;
 
 export {
-    ContainerLanding,
-    SectionInformation,
-    Title,
-    SectionMain,
-    SectionContent,
-    Button,
-    SectionImage,
-    GalleryContainer,
-    ImageWrapper,
-    Image,
-    ImageOverlay,
-    ImageText
+  ContainerLanding,
+  SectionInformation,
+  Title,
+  SectionMain,
+  SectionContent,
+  Button,
+  SectionImage,
+  GalleryContainer,
+  ImageWrapper,
+  Image,
+  ImageOverlay,
+  ImageText
 }

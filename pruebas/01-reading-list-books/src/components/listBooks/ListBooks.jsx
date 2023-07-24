@@ -1,10 +1,12 @@
 import { useContext, useEffect, useState } from "react"
 import { dataContext } from "../../context/DataContext";
 
+// Components
 import { CardBook } from "./cardBook/CardBook";
+import { ReadingList } from "../readingList/ReadingList";
 
 // Styled
-import { Container, ContainerCard } from "./listBooks.styled";
+import { Container, ContainerCard, ContainerReadingList } from "./listBooks.styled";
 
 export function ListBooks({ filterGenre }) {
 
@@ -20,16 +22,16 @@ export function ListBooks({ filterGenre }) {
 
         setCounterGenre(genreFilter.length)
         setBooksFilter(genreFilter)
-    }, [filterGenre])
+    }, [filterGenre, books])
 
     return (
         <Container>
             <div>
-                <h2>Reading List</h2>
+                <h2>List Books</h2>
 
             </div>
             <h3>
-                Libros disponibles: {booksAvailable}
+                Libros disponibles: {books.length}
             </h3>
             <h4>
                 Contador de libros por genero : {counterGenre}
@@ -40,14 +42,20 @@ export function ListBooks({ filterGenre }) {
                     booksFilter.map(b => {
                         return (
                             <div key={b.book.ISBN}>
-                                <CardBook title={b.book.title} cover={b.book.cover} />
+                                <CardBook
+                                    title={b.book.title}
+                                    cover={b.book.cover}
+                                    b={b.book}
+                                />
                             </div>
                         )
                     })
                 }
 
             </ContainerCard>
-
+            <ContainerReadingList>
+                <ReadingList />
+            </ContainerReadingList>
         </Container>
 
     )

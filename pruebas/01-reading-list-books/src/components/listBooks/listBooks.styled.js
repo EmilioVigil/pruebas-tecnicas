@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
+    position : relative;
     background-color: #F2E4CF;
     display: flex;
     flex-direction: column;
@@ -19,8 +20,16 @@ const ContainerCard = styled.div`
 
 `
 
+const ContainerReadingList = styled.div`
+    position : absolute;
+    top : 0;
+    right : 50px;
+
+`
+
 
 export {
     Container,
-    ContainerCard
+    ContainerCard,
+    ContainerReadingList
 }
