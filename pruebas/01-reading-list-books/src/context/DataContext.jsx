@@ -35,7 +35,10 @@ export const DataProvider = ({ children }) => {
         setGenre(uniqueGenres)
     }, [books])
 
+    // Funcion para agregar libros a mi readingList
+    const addBookReadingList = (b) => {
 
+    }
 
     return (
         <dataContext.Provider value={{ books, setBooks, genre, counterGenre, setCounterGenre, booksAvailable, readingList, setReadingList }}  >
