@@ -4,23 +4,16 @@ import { dataContext } from "../../../context/DataContext"
 
 import { ContainerCard } from "./CardBook.styled"
 
-export function CardBook({ b }) {
+export function CardBook({ b, title, cover }) {
 
-    const { books, setBooks, readingList, setReadingList } = useContext(dataContext)
+    const { addBookReadingList } = useContext(dataContext)
 
-    const handleClick = (b) => {
-        setReadingList([...readingList, b])
-
-        // Filtramos nuestra lista de books
-        const filterBook = books.filter(bo => bo.book !== b)
-        setBooks(filterBook)
-    }
 
     return (
         <ContainerCard>
-            <h1>{b.title}</h1>
-            <img src={b.cover} alt="front-page-book" />
-            <button onClick={() => handleClick(b)} >
+            <h1>{title}</h1>
+            <img src={cover} alt="front-page-book" />
+            <button onClick={() => addBookReadingList(b)} >
                 Agregar a la lista de lectura
             </button>
         </ContainerCard>

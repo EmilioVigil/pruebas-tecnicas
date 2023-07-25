@@ -22,26 +22,58 @@ export const DataProvider = ({ children }) => {
             .then(data => {
                 setBooks(data.library)
                 setBooksAvailable(data.library.length)
+                const uniqueGenres = data.library.reduce((acc, b) => {
+                    if (!acc.includes(b.book.genre)) {
+                        acc.push(b.book.genre);
+                    }
+                    return acc;
+                }, []);
+                setGenre(uniqueGenres)
             })
     }, [])
 
-    useEffect(() => {
-        const uniqueGenres = books.reduce((acc, b) => {
-            if (!acc.includes(b.book.genre)) {
-                acc.push(b.book.genre);
-            }
-            return acc;
-        }, []);
-        setGenre(uniqueGenres)
-    }, [books])
+    // useEffect(() => {
+    //     const uniqueGenres = books.reduce((acc, b) => {
+    //         if (!acc.includes(b.book.genre)) {
+    //             acc.push(b.book.genre);
+    //         }
+    //         return acc;
+    //     }, []);
+    //     setGenre(uniqueGenres)
+    // }, [])
 
     // Funcion para agregar libros a mi readingList
     const addBookReadingList = (b) => {
+        setReadingList([...readingList, b])
 
+        // Modificar la lista de libros cuando agregamos a la lista de lectura
+        const filterBooks = books.filter(el => el.book !== b.book)
+        setBooks(filterBooks)
     }
 
+    const removeBookReadingList = (b) => {
+        const filterReadingList = readingList.filter(el => el.book !== b.book)
+        setReadingList(filterReadingList)
+
+        // Agregar libro a mi estado global de books
+        setBooks([...books, b])
+    }
+
+
     return (
-        <dataContext.Provider value={{ books, setBooks, genre, counterGenre, setCounterGenre, booksAvailable, readingList, setReadingList }}  >
+        <dataContext.Provider value={{
+            books,
+            setBooks,
+            genre,
+            counterGenre,
+            setCounterGenre,
+            booksAvailable,
+            readingList,
+            setReadingList,
+            addBookReadingList,
+            removeBookReadingList
+        }}
+        >
             {
                 children
             }

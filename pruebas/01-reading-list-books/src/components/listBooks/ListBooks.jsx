@@ -45,7 +45,7 @@ export function ListBooks({ filterGenre }) {
                                 <CardBook
                                     title={b.book.title}
                                     cover={b.book.cover}
-                                    b={b.book}
+                                    b={b}
                                 />
                             </div>
                         )

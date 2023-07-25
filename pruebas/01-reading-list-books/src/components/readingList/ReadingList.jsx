@@ -10,7 +10,7 @@ import {
 export function ReadingList() {
 
     // Context
-    const { readingList, setReadingList, books, setBooks } = useContext(dataContext);
+    const { readingList, removeBookReadingList } = useContext(dataContext);
 
 
     const [showMenu, setShowMenu] = useState(false)
@@ -28,10 +28,7 @@ export function ReadingList() {
         setShowButton(true)
     }
 
-    const handleRemoveList = (b) => {
-        const filterList = readingList.filter(book => book !== b)
-        setReadingList(filterList)
-    }
+
 
     return (
         <ContainerReadingList>
@@ -54,9 +51,9 @@ export function ReadingList() {
                     readingList.length ?
                         readingList.map(b => {
                             return (
-                                <ul key={b.ISBN}>
-                                    <li>{b.title}</li>
-                                    <button onClick={() => handleRemoveList(b)}>
+                                <ul key={b.book.ISBN}>
+                                    <li>{b.book.title}</li>
+                                    <button onClick={() => removeBookReadingList(b)}>
                                         Quitar de la lista
                                     </button>
                                 </ul>
