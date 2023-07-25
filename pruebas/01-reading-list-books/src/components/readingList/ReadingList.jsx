@@ -29,7 +29,6 @@ export function ReadingList() {
     }
 
 
-
     return (
         <ContainerReadingList>
 
@@ -38,7 +37,9 @@ export function ReadingList() {
                     <img onClick={(e) => handleShowMenu(e)} src={Logo} alt="" />
                 </ButtonImg>
                 <span>
-                    0
+                    {
+                        readingList.length
+                    }
                 </span>
             </div>
 
