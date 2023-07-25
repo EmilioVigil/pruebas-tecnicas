@@ -32,17 +32,9 @@ export const DataProvider = ({ children }) => {
             })
     }, [])
 
-    // useEffect(() => {
-    //     const uniqueGenres = books.reduce((acc, b) => {
-    //         if (!acc.includes(b.book.genre)) {
-    //             acc.push(b.book.genre);
-    //         }
-    //         return acc;
-    //     }, []);
-    //     setGenre(uniqueGenres)
-    // }, [])
 
-    // Funcion para agregar libros a mi readingList
+
+    // Funciones para agregar y remover books de mi readingList
     const addBookReadingList = (b) => {
         setReadingList([...readingList, b])
 
